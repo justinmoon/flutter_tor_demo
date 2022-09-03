@@ -15,6 +15,7 @@ pub enum Platform {
     MacApple,
     Wasm,
 }
+use tor_example_rs::{create_owned_tor_service, get_request};
 
 // A function definition in Rust. Similar to Dart, the return type must always be named
 // and is never inferred.
@@ -56,4 +57,16 @@ pub fn platform() -> Platform {
 // and they are automatically converted to camelCase on the Dart side.
 pub fn rust_release_mode() -> bool {
     cfg!(not(debug_assertions))
+}
+
+pub fn tor() -> String {
+    let _tor_service = create_owned_tor_service();
+
+    println!("Tor Created!!\n Socks5 Proxy: 127.0.0.1:{}\n", 19054);
+
+    let get_req = get_request();
+
+    println!("make a get request from library: {}", get_req);
+
+    get_req
 }

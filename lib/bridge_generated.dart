@@ -19,6 +19,10 @@ abstract class Native {
   Future<bool> rustReleaseMode({dynamic hint});
 
   FlutterRustBridgeTaskConstMeta get kRustReleaseModeConstMeta;
+
+  Future<String> tor({dynamic hint});
+
+  FlutterRustBridgeTaskConstMeta get kTorConstMeta;
 }
 
 enum Platform {
@@ -68,6 +72,20 @@ class NativeImpl extends FlutterRustBridgeBase<NativeWire> implements Native {
         argNames: [],
       );
 
+  Future<String> tor({dynamic hint}) => executeNormal(FlutterRustBridgeTask(
+        callFfi: (port_) => inner.wire_tor(port_),
+        parseSuccessData: _wire2api_String,
+        constMeta: kTorConstMeta,
+        argValues: [],
+        hint: hint,
+      ));
+
+  FlutterRustBridgeTaskConstMeta get kTorConstMeta =>
+      const FlutterRustBridgeTaskConstMeta(
+        debugName: "tor",
+        argNames: [],
+      );
+
   // Section: api2wire
 
   // Section: api_fill_to_wire
@@ -75,6 +93,10 @@ class NativeImpl extends FlutterRustBridgeBase<NativeWire> implements Native {
 }
 
 // Section: wire2api
+String _wire2api_String(dynamic raw) {
+  return raw as String;
+}
+
 bool _wire2api_bool(dynamic raw) {
   return raw as bool;
 }
@@ -85,6 +107,14 @@ int _wire2api_i32(dynamic raw) {
 
 Platform _wire2api_platform(dynamic raw) {
   return Platform.values[raw];
+}
+
+int _wire2api_u8(dynamic raw) {
+  return raw as int;
+}
+
+Uint8List _wire2api_uint_8_list(dynamic raw) {
+  return raw as Uint8List;
 }
 
 // ignore_for_file: camel_case_types, non_constant_identifier_names, avoid_positional_boolean_parameters, annotate_overrides, constant_identifier_names
@@ -136,6 +166,18 @@ class NativeWire implements FlutterRustBridgeWireBase {
           'wire_rust_release_mode');
   late final _wire_rust_release_mode =
       _wire_rust_release_modePtr.asFunction<void Function(int)>();
+
+  void wire_tor(
+    int port_,
+  ) {
+    return _wire_tor(
+      port_,
+    );
+  }
+
+  late final _wire_torPtr =
+      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int64)>>('wire_tor');
+  late final _wire_tor = _wire_torPtr.asFunction<void Function(int)>();
 
   void free_WireSyncReturnStruct(
     WireSyncReturnStruct val,

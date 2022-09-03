@@ -38,6 +38,20 @@
 			remoteGlobalIDString = CA60F0FEBE702969E816930C;
 			remoteInfo = "native-staticlib";
 		};
+		D023FB0728C3BAB9004331C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A35253292866B17200EFD9C6 /* native.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CA603EE7FF4DEAC3B2E0A336;
+			remoteInfo = "native-cdylib";
+		};
+		D023FB0928C3BAB9004331C4 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = A35253292866B17200EFD9C6 /* native.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = CA60F0FEBE702969E816930C;
+			remoteInfo = "native-staticlib";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -147,6 +161,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		D023FB0328C3BAB7004331C4 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D023FB0828C3BAB9004331C4 /* native.dylib */,
+				D023FB0A28C3BAB9004331C4 /* libnative_static.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -202,6 +225,10 @@
 					ProductGroup = A35253352866B1B000EFD9C6 /* Products */;
 					ProjectRef = A35253342866B1B000EFD9C6 /* native.xcodeproj */;
 				},
+				{
+					ProductGroup = D023FB0328C3BAB7004331C4 /* Products */;
+					ProjectRef = A35253292866B17200EFD9C6 /* native.xcodeproj */;
+				},
 			);
 			projectRoot = "";
 			targets = (
@@ -223,6 +250,20 @@
 			fileType = archive.ar;
 			path = libnative_static.a;
 			remoteRef = A352533D2866B1B100EFD9C6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D023FB0828C3BAB9004331C4 /* native.dylib */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.dylib";
+			path = native.dylib;
+			remoteRef = D023FB0728C3BAB9004331C4 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D023FB0A28C3BAB9004331C4 /* libnative_static.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libnative_static.a;
+			remoteRef = D023FB0928C3BAB9004331C4 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

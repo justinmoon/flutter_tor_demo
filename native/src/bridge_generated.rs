@@ -41,6 +41,18 @@ pub extern "C" fn wire_rust_release_mode(port_: i64) {
     )
 }
 
+#[no_mangle]
+pub extern "C" fn wire_tor(port_: i64) {
+    FLUTTER_RUST_BRIDGE_HANDLER.wrap(
+        WrapInfo {
+            debug_name: "tor",
+            port: Some(port_),
+            mode: FfiCallMode::Normal,
+        },
+        move || move |task_callback| Ok(tor()),
+    )
+}
+
 // Section: wire structs
 
 // Section: wrapper structs
@@ -97,6 +109,7 @@ impl support::IntoDart for Platform {
         .into_dart()
     }
 }
+
 // Section: executor
 
 support::lazy_static! {
